@@ -1,36 +1,36 @@
 <template>
-	<v-card>
-		<v-snackbar
-						v-model="snackbar"
-						:timeout="timeout"
-		>
-			{{ text }}
-			<v-btn
-							color="blue"
-							text
-							@click="snackbar = false"
-			>
-				Close
-			</v-btn>
-		</v-snackbar>
+  <v-card>
+    <v-snackbar
+        v-model="snackbar"
+        :timeout="timeout"
+    >
+      {{ text }}
+      <v-btn
+          color="blue"
+          text
+          @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
 
-		<v-card-title>
-			Nutrition
-			<div class="flex-grow-1"></div>
-			<v-text-field
-							v-model="search"
-							append-icon="search"
-							label="Search"
-							single-line
-							hide-details
-			></v-text-field>
-		</v-card-title>
-		<v-data-table
-						:headers="headers"
-						:items="desserts"
-						:search="search"
-		></v-data-table>
-	</v-card>
+    <v-card-title>
+      Nutrition
+      <div class="flex-grow-1"></div>
+      <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+      />
+    </v-card-title>
+    <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :search="search"
+    />
+  </v-card>
 </template>
 
 <script>
@@ -45,11 +45,11 @@
 						sortable: false,
 						value: 'name',
 					},
-					{text: 'Calories', value: 'calories'},
-					{text: 'Fat (g)', value: 'fat'},
-					{text: 'Carbs (g)', value: 'carbs'},
-					{text: 'Protein (g)', value: 'protein'},
-					{text: 'Iron (%)', value: 'iron'},
+					{ text: 'Calories', value: 'calories' },
+					{ text: 'Fat (g)', value: 'fat' },
+					{ text: 'Carbs (g)', value: 'carbs' },
+					{ text: 'Protein (g)', value: 'protein' },
+					{ text: 'Iron (%)', value: 'iron' }
 				],
 				desserts: [
 					{
@@ -131,10 +131,10 @@
 						carbs: 65,
 						protein: 7,
 						iron: '6%',
-					},
+					}
 				],
 				snackbar: true,
-				text: 'My timeout is set to 5s.',
+				text: 'Reload Success! My timeout is set to 5s.',
 				timeout: 5000
 			}
 		},
