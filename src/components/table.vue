@@ -14,7 +14,7 @@
       </v-btn>
     </v-snackbar>
 
-    <v-card-title>
+    <v-card-title>{{ddv}}
       Nutrition
       <div class="flex-grow-1"></div>
       <v-text-field
@@ -138,6 +138,11 @@
 				timeout: 5000
 			}
 		},
+		computed: {
+			ddv () {
+				return this.desserts.length
+			}
+    }
 	}
 </script>
 
