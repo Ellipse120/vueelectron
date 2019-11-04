@@ -1,9 +1,9 @@
 'use strict'
 
-import { app, BrowserWindow, ipcMain, protocol } from 'electron'
+import { app, BrowserWindow, ipcMain, protocol, screen } from 'electron'
 import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib'
 
-const electron = require('electron')
+// const electron = require('electron')
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -14,7 +14,7 @@ let win
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
 function createWindow () {
-	const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
+	const { width, height } = screen.getPrimaryDisplay().workAreaSize
 	// Create the browser window.
 	win = new BrowserWindow({
 		width: width, height: height, webPreferences: {
@@ -75,8 +75,13 @@ app.on('ready', async () => {
 	createWindow()
 
 	ipcMain.on('asynchronous-message', (event, arg) => {
-		console.log(arg)
-    event.reply('asynchronous-reply', 80)
+		setTimeout(() => {
+			event.reply('asynchronous-reply', 'done')
+		}, 2000)
+		// setInterval(() => {
+		// 	event.reply('asynchronous-reply', Math.ceil(Math.random() * 100))
+		// }, 2000)
+    // event.reply('asynchronous-reply', 'done')
 	})
 })
 
